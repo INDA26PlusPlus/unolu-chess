@@ -300,7 +300,7 @@ impl Piece {
             Ply::Capture {
                 old_position,
                 new_position,
-                captured_piece
+                captured_piece: _
             } => {
                 if old_position != self.position { panic!("Mismatched position!"); }
                 self.position = new_position;
@@ -753,7 +753,7 @@ impl Game {
         for p in self.pieces.clone() {
             for ply in p.find_plies(self) {
                 match ply {
-                    Ply::Capture { old_position, new_position, captured_piece } => {
+                    Ply::Capture { old_position: _, new_position: _, captured_piece } => {
                         if captured_piece == PieceType::KING {
                             return true;
                         }
@@ -847,7 +847,7 @@ impl Game {
                 }
                 for pl in plies.clone() {
                     match pl {
-                        Ply::Quiet { old_position, new_position } => {
+                        Ply::Quiet { old_position: _, new_position } => {
                             if new_position == Position::new(j, i as i8) {
                                 c = ".";
                                 break;
