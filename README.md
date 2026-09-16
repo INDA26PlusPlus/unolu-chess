@@ -1,5 +1,7 @@
 # Tjack
 
+Om du vill testa att spela schack är det bara att flytta `src/_main.rs` till `src/main.rs`
+
 Positioner representeras som `Position` struct som innehåller `file` och `rank` av typerna `File` respektive `Rank`.
 `File` är en enum.
 `Rank` är en typedef:ad i8.
