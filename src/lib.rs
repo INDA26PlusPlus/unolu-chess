@@ -612,8 +612,8 @@ impl Piece {
 
 #[derive(Debug, Clone, Copy)]
 pub struct PieceRepresentation {
-    color: Color,
-    piece_type: PieceType,
+    pub color: Color,
+    pub piece_type: PieceType,
 }
 
 impl PieceRepresentation {
