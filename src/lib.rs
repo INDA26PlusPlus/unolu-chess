@@ -745,7 +745,7 @@ impl Game {
     pub fn get_matrix_board_repr(&self) -> [[Option<PieceRepresentation>; 8]; 8] {
         let mut repr: [[Option<PieceRepresentation>; 8]; 8] = [[None; 8]; 8];
         for p in self.pieces.clone() {
-            repr[(8-p.position.rank) as usize][(p.position.file as i8) as usize] = Some(PieceRepresentation::new(p.color.clone(), p.piece_type.clone()));
+            repr[(8-p.position.rank) as usize][(p.position.file as i8 -1) as usize] = Some(PieceRepresentation::new(p.color.clone(), p.piece_type.clone()));
         }
         return repr;
     }
