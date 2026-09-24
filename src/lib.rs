@@ -413,8 +413,12 @@ impl Piece {
         for r in (1..=(self.position.rank-1)).rev() {
             if bb.at_position(Position::new(self.position.file.clone(), r)) {
                 if bbo.at_position(Position::new(self.position.file.clone(), r)) {
-                    let new_pos = self.position.shift_clone(0, self.position.rank-r).unwrap();
-                    plys.push(Ply::Capture { old_position: self.position.clone(), new_position: new_pos, captured_piece: game.pieces.get(game.find_piece_at_position(new_pos).unwrap()).unwrap().piece_type });
+                    let new_pos = self.position.shift_clone(0, r-self.position.rank).unwrap();
+                    plys.push(Ply::Capture {
+                        old_position: self.position.clone(),
+                        new_position: new_pos,
+                        captured_piece: game.pieces.get(game.find_piece_at_position(new_pos).unwrap()).unwrap().piece_type
+                    });
                 }
                 break;
             } else {
