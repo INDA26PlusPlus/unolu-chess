@@ -774,6 +774,7 @@ impl Game {
         }
         for p in self.pieces.iter().filter(|x| x.piece_type == PieceType::KING).next().unwrap().find_plies(self) {
             let mut new_game = self.clone();
+            new_game.turn = new_game.turn.invert();
             new_game.perform_ply(p);
             if !new_game.is_check() {
                 return false;
